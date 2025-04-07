@@ -22,7 +22,6 @@ let package = Package(
                 sources: ["src"],
                 publicHeadersPath: "spm_include",
                 cSettings: [
-                    .headerSearchPath("SASL2.xcframework/ios-arm64/Headers"),
                     .headerSearchPath("spm_include/libetpan"),
                     .headerSearchPath("src/data-types"),
                     .headerSearchPath("src/low-level/feed"),
@@ -38,6 +37,7 @@ let package = Package(
                     .headerSearchPath("src/driver/implementation"),
                     .headerSearchPath("src/driver/interface"),
                     .headerSearchPath("src/driver/tools"),
+                    .headerSearchPath("SASL2.xcframework/ios-arm64/Headers"),
                     .define("HAVE_LIMITS_H"),
                     .define("HAVE_UNISTD_H"),
                     .define("HAVE_SYS_MMAN_H"),
