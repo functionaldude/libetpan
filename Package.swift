@@ -20,7 +20,7 @@ let package = Package(
                 exclude: ["src/windows",
                           "src/bsd"],
                 sources: ["src"],
-                publicHeadersPath: ["spm_include"],
+                publicHeadersPath: "spm_include",
                 cSettings: [
                     .headerSearchPath("libsasl-ios/include/sasl"),
                     .headerSearchPath("spm_include/libetpan"),
