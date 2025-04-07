@@ -16,6 +16,7 @@ let package = Package(
     targets: [
         .binaryTarget(name: "sasl2", path: "SASL2.xcframework"),
         .target(name: "libetpan",
+                dependencies: ["sasl2"],
                 path: ".",
                 exclude: ["src/windows",
                           "src/bsd"],
