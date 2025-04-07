@@ -19,8 +19,9 @@ let package = Package(
                 exclude: ["src/windows",
                           "src/bsd"],
                 sources: ["src"],
-                publicHeadersPath: "spm_include",
+                publicHeadersPath: ["spm_include", "libsasl-ios/include"],
                 cSettings: [
+                    .headerSearchPath("libsasl-ios/include/sasl"),
                     .headerSearchPath("spm_include/libetpan"),
                     .headerSearchPath("src/data-types"),
                     .headerSearchPath("src/low-level/feed"),
@@ -58,12 +59,13 @@ let package = Package(
                     .define("HAVE_ZLIB"),
                     .define("LIBETPAN_REENTRANT"),
                     .define("PACKAGE", to: "libetpan"),
-                    .define("USE_SASL", .when(platforms: [.macOS]))
+                    .define("USE_SASL", .when(platforms: [.macOS, .iOS])),
                 ],
                 linkerSettings: [
                     .linkedLibrary("iconv"),
                     .linkedLibrary("z"),
-                    .linkedLibrary("sasl2", .when(platforms: [.macOS])),
+                    //.linkedLibrary("sasl2", .when(platforms: [.macOS])),
+                    .linkedLibrary("libsasl-ios/lib/iphoneos/libsasl2.a")
                     .linkedLibrary("c")
                 ]),
         
