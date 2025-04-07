@@ -15,7 +15,7 @@ let package = Package(
     ],
     targets: [
         .target(name: "libetpan",
-                dependencies: ["sasl2"],
+                //dependencies: ["sasl2"],
                 path: ".",
                 exclude: ["src/windows",
                           "src/bsd"],
@@ -65,11 +65,10 @@ let package = Package(
                 linkerSettings: [
                     .linkedLibrary("iconv"),
                     .linkedLibrary("z"),
-                    //.linkedFramework("sasl2"),
+                    .linkedFramework("sasl2"),
                     .linkedLibrary("c")
                 ]),
         .binaryTarget(name: "sasl2", path: "SASL2.xcframework"),
-        
     ],
     cLanguageStandard: .gnu11,
     cxxLanguageStandard: .cxx20
