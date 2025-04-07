@@ -64,7 +64,7 @@ let package = Package(
                 linkerSettings: [
                     .linkedLibrary("iconv"),
                     .linkedLibrary("z"),
-                    .linkedLibrary("libsasl-ios/lib/iphoneos/libsasl2.a")
+                    .linkedFramework("libsasl-ios/lib/iphoneos/libsasl2.a")
                     .linkedLibrary("c")
                 ]),
         
