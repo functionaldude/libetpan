@@ -16,7 +16,7 @@ let package = Package(
     targets: [
         .target(name: "libetpan",
                 dependencies: [
-                    // Use static sasl2 library, because it contains iOS support too.
+                    // Use static sasl2 library, because it contains iOS support.
                     .target(name: "sasl2", condition: .when(platforms: [.iOS]))
                 ],
                 path: ".",
