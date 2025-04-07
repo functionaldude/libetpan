@@ -22,7 +22,7 @@ let package = Package(
                 sources: ["src"],
                 publicHeadersPath: "spm_include",
                 cSettings: [
-                    .headerSearchPath("libsasl-ios/include/sasl"),
+                    .headerSearchPath("SASL2.xcframework/ios-arm64/Headers"),
                     .headerSearchPath("spm_include/libetpan"),
                     .headerSearchPath("src/data-types"),
                     .headerSearchPath("src/low-level/feed"),
