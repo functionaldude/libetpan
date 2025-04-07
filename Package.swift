@@ -14,7 +14,6 @@ let package = Package(
             targets: ["libetpan"]),
     ],
     targets: [
-        .binaryTarget(name: "sasl2", path: "SASL2.xcframework"),
         .target(name: "libetpan",
                 dependencies: ["sasl2"],
                 path: ".",
@@ -61,7 +60,7 @@ let package = Package(
                     .define("HAVE_ZLIB"),
                     .define("LIBETPAN_REENTRANT"),
                     .define("PACKAGE", to: "libetpan"),
-                    .define("USE_SASL", to: "true"),
+                    .define("USE_SASL", to: "1"),
                 ],
                 linkerSettings: [
                     .linkedLibrary("iconv"),
@@ -69,6 +68,7 @@ let package = Package(
                     //.linkedFramework("sasl2"),
                     .linkedLibrary("c")
                 ]),
+        .binaryTarget(name: "sasl2", path: "SASL2.xcframework"),
         
     ],
     cLanguageStandard: .gnu11,
