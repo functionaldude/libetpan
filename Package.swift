@@ -15,7 +15,10 @@ let package = Package(
     ],
     targets: [
         .target(name: "libetpan",
-                dependencies: ["sasl2"],
+                dependencies: [
+                    // Use static sasl2 library, because it contains iOS support too.
+                    .product(name: "sasl2", package: "sasl2", condition: .when(platforms: [.iOS]))
+                ],
                 path: ".",
                 exclude: ["src/windows",
                           "src/bsd"],
@@ -60,11 +63,12 @@ let package = Package(
                     .define("HAVE_ZLIB"),
                     .define("LIBETPAN_REENTRANT"),
                     .define("PACKAGE", to: "libetpan"),
-                    .define("USE_SASL", to: "1"),
+                    .define("USE_SASL", .when(platforms: [.macOS, .iOS]))
                 ],
                 linkerSettings: [
                     .linkedLibrary("iconv"),
                     .linkedLibrary("z"),
+                    .linkedLibrary("sasl2", .when(platforms: [.macOS])),
                     .linkedLibrary("c")
                 ]),
         .binaryTarget(name: "sasl2", path: "SASL2.xcframework"), // Order is important, this must be after the libetpan target
